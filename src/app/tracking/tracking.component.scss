@@ -1,0 +1,63 @@
+@import "../../styles";
+
+.bg {
+  background: #c0c0c0;
+  height: 200px;
+}
+
+.tracking-search-box {
+  max-width: 550px;
+
+  .prefix-box {
+    max-width: 100px;
+    padding-right: 0 !important;
+  }
+}
+
+.track-info-box {
+  padding-top: 20px;
+}
+
+.divider {
+  width: 1px;
+  background: darkgrey;
+}
+
+.track-details-measurements {
+  padding-top: 1.5rem;
+
+  div[class^="col-"] {
+    text-align: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  div[class^="col-"]:first-child {
+    border-left: none;
+  }
+
+  .value {
+    margin-top: 1rem;
+  }
+}
+
+.track-details-margin-top {
+  margin-top: 1rem;
+}
+.track-event {
+  $fsu-box-size: 4rem;
+  .fsu {
+    width: $fsu-box-size !important;
+    height: $fsu-box-size !important;
+    div {
+      line-height: $fsu-box-size;
+    }
+  }
+}
+
+.track-events {
+  .track-event:last-child {
+    hr {
+      display:none;
+    }
+  }
+}

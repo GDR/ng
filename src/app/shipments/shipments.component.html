@@ -1,0 +1,85 @@
+<div class="container" style="height: calc(100% - 200px)" *ngIf="loading == true">
+  <div style="width: 100%; height: 100%" class="flex-items-xs-center row">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw col-xs-1 text-xs-center flex-xs-middle"></i>
+  </div>
+</div>
+<div class="container" *ngIf="shipments != null">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">Shipments</div>
+        <div class="card-block">
+          <div *ngFor="let shipment of shipments" class="shipment row">
+            <div class="col-lg-3">
+              <div class="row">
+                <div class="col-xs" style="max-width: 94px; height: 64px">
+                  <div class="h-100 bg-info text-xs-center" style="color: #FFF; line-height: 64px">
+                    {{shipment.fsu}}
+                  </div>
+                </div>
+                <div class="col-xs">
+                  <div class="row h-100">
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <h5 class="d-inline-block mb-0">
+                          <span *ngIf="shipment.blankPrefix == null || shipment.blankPrefix == null">
+                            {{shipment.id}}
+                          </span>
+                          <span *ngIf="shipment.blankPrefix != null && shipment.blankNumber != null">
+                            {{shipment.blankPrefix}} - {{shipment.blankNumber}}
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 flex-xs-bottom">
+                      <div class="row">
+                        <b>{{shipment.destination}}</b>&nbsp;&nbsp;&nbsp;{{shipment.destinationCity}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="row h-100">
+                <div class="col-xs-12 shipment-measurements">
+                  <div class="row">
+                    <div class="col-xs" style="max-width: 80px">
+                      <i class="fa fa-cubes" aria-hidden="true"></i>
+                      <div class="value">{{shipment.pieces}}</div>
+                    </div>
+                    <div class="col-xs" style="max-width: 120px">
+                      <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                      <div class="value">{{shipment.weight}} kg</div>
+                    </div>
+                    <div class="col-xs" style="max-width: 120px">
+                      <i class="fa fa-arrows" aria-hidden="true"></i>
+                      <div class="value">{{shipment.volume}} m3</div>
+                    </div>
+                    <div class="col-xs">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                      <div class="value">{{shipment.date | date: 'dd.MM mm:hh'}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 flex-xs-bottom">
+                  <div class="d-inline-block" *ngIf="shipment.carrier != null">
+                    {{shipment.carrier}} {{shipment.flight}} | {{shipment.flightDate | date: "ddMMM yy" | uppercase}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <b>
+                {{shipment.natureOfGoods}}
+              </b>
+            </div>
+            <div class="col-xs-12">
+              <hr style="height: 3px"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

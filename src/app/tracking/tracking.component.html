@@ -1,0 +1,124 @@
+<div class="container-fluid bg">
+    <div class="row h-100 flex-items-xs-center">
+        <div class="col-xs flex-xs-middle row tracking-search-box">
+            <div class="prefix-box input-group col-xs">
+                <input class="form-control" type="text" id="track-prefix" [(ngModel)]="trackPrefix"
+                       (keyup.enter)="searchTrack()"
+                       placeholder="Prefix">
+            </div>
+            <div class="input-group col-xs">
+                <input class="form-control" type="text" id="track-number" [(ngModel)]="trackNumber"
+                       (keyup.enter)="searchTrack()"
+                       placeholder="Number">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary btn-lg" type="button" (click)="searchTrack()">Search</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="height: calc(100% - 200px)" *ngIf="loading == true">
+    <div style="width: 100%; height: 100%" class="flex-items-xs-center row">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw col-xs-1 text-xs-center flex-xs-middle"></i>
+    </div>
+</div>
+<div class="container track-info-box" *ngIf="trackDetails != null">
+    <div class="row">
+        <div class="col-lg-4 push-lg-8">
+            <div class="card">
+                <div class="card-header">Track details</div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Track number:</label>
+                            <h4>
+                                # {{trackDetails.blankPrefix}}&nbsp;-&nbsp;{{trackDetails.blankNumber}}
+                            </h4>
+                            <hr/>
+                        </div>
+                        <div class="col-xs-12">
+                            <label>
+                                Origin:
+                            </label>
+                            <h4>
+                                <i class="fa fa-plane" style="vertical-align: middle;" aria-hidden="true"></i>
+                                <b>{{trackDetails.origin}}</b>
+                                {{trackDetails.originCity}}
+                            </h4>
+                        </div>
+                        <div class="col-xs-12">
+                            <label>
+                                Destination:
+                            </label>
+                            <h4>
+                                <i class="fa fa-plane fa-rotate-90" style="vertical-align: middle;"
+                                   aria-hidden="true"></i>
+                                <b>{{trackDetails.destination}}</b> {{trackDetails.destinationCity}}
+                            </h4>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="row text-xs-center track-details-measurements">
+                                <div class="col-xs">
+                                    <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+                                    <div class="value">{{trackDetails.pieces}} pieces</div>
+                                </div>
+                                <div class="col-xs">
+                                    <i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i>
+                                    <div class="value">{{trackDetails.weight}} kg</div>
+                                </div>
+                                <div class="col-xs">
+                                    <i class="fa fa-arrows fa-2x" aria-hidden="true"></i>
+                                    <div class="value">{{trackDetails.volume}} m3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 pull-lg-4">
+            <div class="card">
+                <div class="card-header">Track events</div>
+                <div class="card-block track-events">
+                    <div class="col-xs-12 track-event" *ngFor="let event of trackDetails.event">
+                        <div class="row">
+                            <div class="fsu col-xs bg-info" style="max-width: 4rem">
+                                <div class="h-100 text-xs-center" style="color: #FFF; font-weight: bolder">{{event.fsu}}</div>
+                            </div>
+                            <div class="col-xs" style="height: 4rem">
+                                <h4>SU 1234</h4>
+                                <h4 style="bottom: 0; position: absolute; margin-bottom: 0"><b>{{event.locationCode}}</b> {{event.location}}</h4>
+                            </div>
+                            <h5 class="col-xs-4 text-xs-right">
+                                3 November 2016
+                            </h5>
+                        </div>
+                        <div class="row" style="margin-top: 1rem;">
+                            <p>{{event.activity}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="row text-xs-center track-details-measurements">
+                                    <div class="col-xs">
+                                        <i class="fa fa-cubes fa-2x" aria-hidden="true"></i>
+                                        <div class="value">{{event.pieces}} pieces</div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i>
+                                        <div class="value">{{event.weight}} kg</div>
+                                    </div>
+                                    <div class="col-xs">
+                                        <i class="fa fa-arrows fa-2x" aria-hidden="true"></i>
+                                        <div class="value">{{event.volume}} m3</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin: 25px -15px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

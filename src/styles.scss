@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap-flex";
+.test {
+  background: pink;
+}
+
+
+html, body {
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute;
+  min-width: 480px;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+nav {
+  width: 100%;
+  position: absolute !important;
+}
+
+$navbar-height: 3.375rem;
+
+.almost-h-100 {
+  height: 100%;
+  padding-top: $navbar-height;
+}

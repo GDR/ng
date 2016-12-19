@@ -1,0 +1,35 @@
+.container {
+  margin-top: 40px;
+}
+
+.shipment-id {
+  font-size: 1.2rem;
+}
+
+.shipment {
+  $fsu-box-size: 4rem;
+
+  .fsu {
+    width: $fsu-box-size !important;
+    height: $fsu-box-size !important;
+    div {
+      line-height: $fsu-box-size;
+    }
+  }
+}
+
+.shipment-measurements {
+
+  div[class^="col-"] {
+    text-align: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  div[class^="col-"]:first-child {
+    border-left: none;
+  }
+
+  .value {
+    display: inline;
+  }
+}
